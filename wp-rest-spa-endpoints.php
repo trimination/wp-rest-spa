@@ -11,7 +11,7 @@ License: All rights reserved.
 require_once 'inc/Bootstrap.php';
 
 function registerRoutes() {
-    $controllers = [new PostController(), new MenuController()];
+    $controllers = [new PostController(), new MenuController(), new PageController()];
 
     foreach($controllers as $controller) {
         $controller->registerRoutes();

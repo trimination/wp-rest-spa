@@ -23,4 +23,16 @@ class BaseController {
         }
         return $newData;
     }
+
+    protected function mergePostsCats($posts) {
+        $data = [];
+        foreach($posts->posts as $post) {
+            $data[] = ["post"=>$post, "categories"=>$this->getPostCategories($post->ID)];
+        }
+        return $data;
+    }
+
+    function getPostCategories($id) {
+        return wp_get_post_categories($id, ["fields"=>"all"]);
+    }
 }

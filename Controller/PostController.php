@@ -17,7 +17,9 @@ class PostController extends BaseController {
         if (false !== $slug)
             $args['cat'] = get_cat_id($slug);
 
-        return $this->response($this->wpQuery($args)->posts, 200);
+        $posts = $this->wpQuery($args);
+        $data = $this->mergePostsCats($posts);
+        return $this->response($data, 200);
     }
 
     function getPosts(WP_REST_Request $request) {
@@ -26,6 +28,7 @@ class PostController extends BaseController {
         $p3 = false !== $limit ? $limit : $p3;
 
         $args = array(
+            'post_type' => 'post',
             'post_status' => 'publish',
             'posts_per_page' => $p3
         );
@@ -47,11 +50,13 @@ class PostController extends BaseController {
             $args['offset'] = $p3 * $page;
         }
         $posts = $this->wpQuery($args);
-        return $this->response($posts->posts, 200);
+        $data = $this->mergePostsCats($posts);
+        return $this->response($data, 200);
     }
 
     function getFeaturedPost(WP_REST_Request $request) {
         $args = array(
+            'post_type' => 'post',
             'post_status' => 'publish',
             'posts_per_page' => 1,
             'category_name' => 'featured'
@@ -78,7 +83,8 @@ class PostController extends BaseController {
             );
         }
         $fp = $this->wpQuery($args);
-        return $this->response($fp->posts, 200);
+        $data = $this->mergePostsCats($fp);
+        return $this->response($data, 200);
     }
 
     function getPostBySlug(WP_REST_Request $request) {
@@ -93,10 +99,11 @@ class PostController extends BaseController {
             'posts_per_page' => 1
         );
 
-        $post = $this->wpQuery($args);
-
-        return $this->response($post->posts, 200);
+        $posts = $this->wpQuery($args);
+        $data = $this->mergePostsCats($posts);
+        return $this->response($data, 200);
     }
+
     function registerRoutes() {
         $version = API_VERSION;
         $namespace = API_NAMESPACE . $version;

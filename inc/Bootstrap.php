@@ -9,3 +9,4 @@ const API_NAMESPACE = 'rest-spa/v';
 require_once WP_PLUGIN_DIR .  '/' . PLUGIN_NAME . '/Controller/BaseController.php';
 require_once WP_PLUGIN_DIR .  '/' . PLUGIN_NAME . '/Controller/PostController.php';
 require_once WP_PLUGIN_DIR .  '/' . PLUGIN_NAME . '/Controller/MenuController.php';
+require_once WP_PLUGIN_DIR .  '/' . PLUGIN_NAME . '/Controller/PageController.php';

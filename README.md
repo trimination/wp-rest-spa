@@ -12,6 +12,7 @@ GET    rest-spa/v1/posts/<slug>     - the post slug
 GET    rest-spa/v1/posts/featured
 GET    rest-spa/v1/posts/recent
 GET    rest-spa/v1/menu
+GET    rest-spa/v1/page/<slug>      - the page slug
 ```
 
 ---
@@ -46,6 +47,8 @@ GET    rest-spa/v1/menu
     - Menu ID can be retrieved by 
 going to Appearance -> Menus -> Hover over "Delete Menu" and look for menu=? in the URL
 
+#### URL Params for /page/\<slug>
+1. force-post - Some themes allow for a page for each category and show the posts on that page; this provides for that scenario and allows you to fetch the posts associated with a given category, based on a page slug
 
 ### Plugin Settings
 
@@ -57,4 +60,7 @@ The following options are available:
 - you can enter `-1` to retrieve ALL posts (not recommended)
 
 ---
+
+_**Note**: I'll be updating this repo until it's where I want it to be, so if there haven't been any commits for more than a couple of months, you can assume that it's where I want it to be._
+
 ###### "If it doesn't work, it wasn't me" - _trimination_
