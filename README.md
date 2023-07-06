@@ -8,6 +8,7 @@
 
 ```
 GET    rest-spa/v1/posts
+GET    rest-spa/v1/posts/<slug>   - the post slug
 GET    rest-spa/v1/posts/featured
 GET    rest-spa/v1/posts/recent
 GET    rest-spa/v1/menu
@@ -18,7 +19,7 @@ GET    rest-spa/v1/menu
 ### URL Query Parameters
 [What are Query Params?](https://en.wikipedia.org/wiki/Query_string)
 
-#### _URL Params for /posts/_
+#### _URL Params for /posts/ and /posts/slug_
 
 1. category - the category slug [OPTIONAL]
 2. exclude - post ID(s) to exclude, CSV format [OPTIONAL]
