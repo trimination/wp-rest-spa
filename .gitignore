@@ -1,0 +1,6 @@
+# JetBrains
+.idea
+# messy convenience file to generate controller boilerplate
+generate-controller.php
+# macOS
+.DS_Store

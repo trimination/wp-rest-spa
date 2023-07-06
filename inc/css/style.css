@@ -1,0 +1,10 @@
+.wprse-textfield {
+    border: none;
+    height: 36px;
+    width: 200px;
+    border-radius: 10px !important;
+    background-color: lightgrey;
+    text-align: center;
+    font-size: 110%;
+    font-weight: bold;
+}
