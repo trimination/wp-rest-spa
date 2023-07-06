@@ -81,6 +81,22 @@ class PostController extends BaseController {
         return $this->response($fp->posts, 200);
     }
 
+    function getPostBySlug(WP_REST_Request $request) {
+        $slug = $request->get_param('slug') ?? false;
+        if(false === $slug)
+            return $this->error("Not Found", 404);
+
+        $args = array(
+            'name'        => $slug,
+            'post_type'   => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => 1
+        );
+
+        $post = $this->wpQuery($args);
+
+        return $this->response($post->posts, 200);
+    }
     function registerRoutes() {
         $version = API_VERSION;
         $namespace = API_NAMESPACE . $version;
@@ -98,6 +114,11 @@ class PostController extends BaseController {
         register_rest_route($namespace, '/posts/recent', array(
             'methods' => WP_REST_Server::READABLE,
             'callback' => array($this, 'getRecentPosts'),
+            'permission_callback' => '__return_true',
+        ));
+        register_rest_route($namespace, '/posts/(?P<slug>\S+)', array(
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => array($this, 'getPostBySlug'),
             'permission_callback' => '__return_true',
         ));
     }

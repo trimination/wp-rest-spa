@@ -11,7 +11,7 @@ class MenuController extends BaseController {
                 return $this->response($items, 200);
             }
         }
-        return $this->response(["error" => "id not provided or id is invalid"], 400);
+        return $this->error("id not provided or id is invalid", 400);
 
     }
 

@@ -5,6 +5,11 @@ class BaseController {
         return new WP_REST_Response($data, $statusCode);
     }
 
+    protected function error($data, $statusCode): WP_REST_Response {
+        $data = ["error" => $data];
+        return new WP_REST_Response($data, $statusCode);
+    }
+
     protected function wpQuery($args) {
         return new WP_Query($args);
     }
@@ -12,7 +17,7 @@ class BaseController {
     protected function filterData($data, $fields) {
         $newData = array();
         foreach ($fields as $field) {
-            foreach($data as $key=>$value) {
+            foreach ($data as $key => $value) {
                 $newData[$key][$field] = $value->{$field};
             }
         }
