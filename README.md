@@ -55,3 +55,5 @@ The following options are available:
 - Recent posts count
 - you can enter `-1` to retrieve ALL posts (not recommended)
 
+---
+###### "If it doesn't work, it wasn't me" - _trimination_
